@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Uncial+Antiqua&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --bg-color: #050508;
+  --card-bg: rgba(22, 22, 30, 0.7);
+  --gold: #c5a059;
+  --gold-light: #f9e29d;
+  --gold-dark: #8c6d31;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --accent: #4c1d95;
+  --mystical-glow: rgba(197, 160, 89, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+.cinzel {
+  font-family: 'Cinzel Decorative', cursive;
+  letter-spacing: 0.15em;
+}
+
+h2,
+h3,
+h4,
+.uncial {
+  font-family: 'Uncial Antiqua', serif;
+  letter-spacing: 0.05em;
+}
+
+.serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.mystical-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(20, 20, 35, 1) 0%, rgba(5, 5, 8, 1) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.mystical-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 50px 160px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 80px 120px, rgba(197, 160, 89, 0.5), rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 110px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 150px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 1900px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 170px 80px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.2;
+  animation: stars-float 100s linear infinite;
+}
+
+@keyframes stars-float {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-300px);
+  }
+}
+
+.glass {
+  background: rgba(15, 15, 25, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 89, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.gold-text {
+  background: linear-gradient(to bottom,
+      #f9e29d 0%,
+      #c5a059 45%,
+      #8c6d31 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
+  transform: rotate(30deg);
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-container {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: padding 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .app-container {
+    padding: 1.5rem;
+  }
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.deck-card {
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.deck-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.deck-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.deck-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.card-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.oracle-button {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.oracle-button:hover {
+  background: var(--gold);
+  color: var(--bg-color);
+}
+
+.hover-gold:hover {
+  color: var(--gold-light) !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Mandala Chat Styles */
+.chat-container {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+  padding-top: 3rem;
+}
+
+.chat-messages {
+  max-height: 500px;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) transparent;
+}
+
+.message-bubble {
+  padding: 1rem 1.4rem;
+  border-radius: 12px;
+  background: rgba(197, 160, 89, 0.05);
+  border: 1px solid rgba(197, 160, 89, 0.1);
+  max-width: 80%;
+  position: relative;
+  align-self: flex-start;
+  animation: fadeIn 0.4s ease;
+}
+
+.message-bubble.own {
+  align-self: flex-end;
+  background: rgba(197, 160, 89, 0.15);
+  border-color: rgba(197, 160, 89, 0.3);
+}
+
+.message-user {
+  font-size: 0.7rem;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  font-family: 'Cinzel Decorative', cursive;
+  letter-spacing: 0.1em;
+}
+
+.message-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.message-time {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  opacity: 0.4;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: rgba(197, 160, 89, 0.05);
+  border-radius: 40px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.chat-input-area:focus-within {
+  border-color: var(--gold);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 160, 89, 0.1);
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.6rem;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.chat-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.mandala-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 1rem;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Magic Particles */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold-light);
+  opacity: 0;
+  box-shadow: 0 0 10px var(--gold);
+  animation: float-particle linear infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+    transform: translateY(90vh) scale(1);
+  }
+
+  90% {
+    opacity: 0.4;
+    transform: translateY(10vh) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) scale(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.spin-slow {
+  animation: spin 3s linear infinite;
+}

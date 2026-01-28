@@ -1,0 +1,187 @@
+-- INGESTA DE CARTAS: LOTE 4 (NATURALEZA)
+-- Cartas: El Fuego, La Luna, El Sol, La Niebla, El Desierto, La Ola, El Lago, La Roca, La Flor
+
+INSERT INTO cards (
+    id, deck_id, name, type, image,
+    interpretation_past, interpretation_present, interpretation_future,
+    question_past, question_present, question_future,
+    challenge_past, challenge_present, challenge_future,
+    ritual_past, ritual_present, ritual_future,
+    invitation
+) VALUES 
+-- CARTA 8: EL FUEGO
+(
+    'nature-fuego', 'nature', 'El Fuego', 'nature', 
+    'https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?q=80&w=1000&auto=format&fit=crop',
+    'Hubo una etapa en tu vida en la que actuaste desde una pasión intensa, casi impulsiva. Esa energía te llevó a tomar decisiones arriesgadas que, aunque no siempre salieron como esperabas, despertaron una fuerza interior que aún te define.',
+    'Estás en un momento en el que la motivación vuelve a encenderse. Hay algo que te importa de verdad y que ya no puedes seguir posponiendo. La clave ahora no es la prisa, sino canalizar tu energía con claridad y propósito.',
+    'Se abre una fase de acción consciente. Si mantienes viva tu llama interior sin quemarte en el exceso, lograrás avances significativos y sostenidos.',
+    '¿Qué pasión pasada despertó una parte esencial de ti?',
+    '¿Qué deseo auténtico estás listo para honrar ahora?',
+    '¿En qué proyecto o dirección quieres invertir tu energía vital?',
+    'Recuerda una decisión valiente que tomaste desde la pasión y nómbrala en voz alta.',
+    'Haz hoy una acción concreta relacionada con algo que te motive de verdad.',
+    'Durante tres días, dedica cinco minutos diarios a ese proyecto o intención.',
+    'Coloca tu mano sobre el pecho al nombrar tu decisión valiente y respira profundo.',
+    'Enciende una vela o una luz y di: “Honro mi fuego interior”.',
+    'Al terminar cada sesión de cinco minutos, apaga la luz diciendo: “Sostengo esta llama”.',
+    'Reconoce tu fuego sin miedo. No todo impulso es peligroso ni toda pasión es caos.'
+),
+-- CARTA 9: LA LUNA
+(
+    'nature-luna', 'nature', 'La Luna', 'nature', 
+    'https://images.unsplash.com/photo-1532693322450-2cb5c511067d?q=80&w=1000&auto=format&fit=crop',
+    'Viviste una etapa en la que tus emociones eran confusas o contradictorias. Tal vez no te sentías comprendido o no sabías explicar lo que te pasaba. Esa sensibilidad profunda te volvió más empático y perceptivo.',
+    'Estás más conectado con tu mundo interior de lo que crees. Hay señales, sueños o intuiciones que merecen tu atención. Ignorarlas ahora sería perder una guía valiosa.',
+    'Se aproxima una fase de mayor claridad emocional. Si confías en tu intuición y no huyes de lo que sienten, integrarás partes de ti que hoy aún rechazas.',
+    '¿Qué emoción pasada no supiste expresar en su momento?',
+    '¿Qué te está intentando decir tu intuición ahora?',
+    '¿Qué parte emocional de ti estás listo para aceptar?',
+    'Recuerda una emoción pasada difícil y nómbrala en voz alta sin juzgarla.',
+    'Antes de dormir hoy, pregúntate: “¿Qué siento realmente ahora mismo?”',
+    'Durante tres días, escucha tu intuición en una pequeña decisión diaria.',
+    'Coloca una mano sobre el vientre y respira tres veces al nombrar tu emoción.',
+    'Apaga las luces un minuto antes de dormir y guarda silencio.',
+    'Al tomar tu pequeña decisión intuitiva, di: “Confío en mi sentir”.',
+    'Permítete sentir sin traducirlo todo en lógica. No todas las respuestas nacen de la mente.'
+),
+-- CARTA 10: EL SOL
+(
+    'nature-sol', 'nature', 'El Sol', 'nature', 
+    'https://images.unsplash.com/photo-1470252649358-96f3e18508e9?q=80&w=1000&auto=format&fit=crop',
+    'Hubo un periodo en tu vida en el que te sentiste pleno, reconocido o alineado contigo mismo. Esa etapa dejó una huella de confianza que aún vive dentro de ti, aunque hoy no siempre la recuerdes.',
+    'Estás entrando en una fase de mayor claridad. Algo empieza a encajar. Tu energía vital se eleva y tu capacidad de decisión se fortalece. Es un buen momento para mostrarse y actuar con honestidad.',
+    'Se abre un ciclo de expansión y alegría consciente. Si sigues tu verdad con coherencia, atraerás situaciones más luminosas y relaciones más alineadas.',
+    '¿Cuándo fue la última vez que te sentiste verdaderamente tú?',
+    '¿En qué área de tu vida estás empezando a ver claridad?',
+    '¿Qué versión más luminosa de ti quieres habitar?',
+    'Recuerda un momento feliz y sonríe conscientemente al evocarlo.',
+    'Haz hoy algo que te haga sentir auténticamente tú.',
+    'Durante tres días, actúa alineado con tu verdad aunque sea en algo pequeño.',
+    'Coloca tu mano sobre el pecho al sonreír y respira profundo.',
+    'Mírate al espejo y di: “Honro quién soy hoy”.',
+    'Al final de cada día, agradece una acción alineada contigo.',
+    'Deja que tu luz vuelva a ocupar espacio. No estás aquí para encogerte ni para vivir a medias.'
+),
+-- CARTA 11: LA NIEBLA
+(
+    'nature-niebla', 'nature', 'La Niebla', 'nature', 
+    'https://images.unsplash.com/photo-1485081666428-4ce3409cefed?q=80&w=1000&auto=format&fit=crop',
+    'Hubo un momento en tu vida en el que caminabas sin claridad. Tomabas decisiones sin ver el panorama completo y avanzabas más por intuición que por certeza. Aunque fue incómodo, esa etapa te enseñó a confiar en ti incluso cuando no entendías el rumbo.',
+    'Estás atravesando una fase de confusión o ambigüedad. No todo está perdido ni mal encaminado; simplemente aún no es visible. Forzar respuestas ahora solo aumentará la ansiedad.',
+    'La niebla se disipará. Una comprensión progresiva llegará si te das tiempo. Lo que hoy parece desorden se transformará en una visión más clara y estable.',
+    '¿Qué etapa confusa terminó fortaleciéndote más de lo que crees?',
+    '¿En qué área de tu vida necesitas paciencia en lugar de control?',
+    '¿Qué claridad esperas que emerja en los próximos meses?',
+    'Recuerda una decisión tomada sin claridad total y reconoce en voz alta qué te permitió aprender.',
+    'Durante un día completo, evita tomar decisiones importantes y observa cómo te sientes.',
+    'Permítete no buscar una respuesta concreta durante tres días sobre algo que te inquietetará.',
+    'Cierra los ojos un minuto y repite: “Confié y avancé”.',
+    'Respira profundo tres veces cada vez que sientas urgencia por decidir.',
+    'Al despertar, di: “La claridad llega a su tiempo”.',
+    'No todo necesita resolverse ahora. Avanzar despacio es la forma más sabia de avanzar.'
+),
+-- CARTA 12: EL DESIERTO
+(
+    'nature-desierto', 'nature', 'El Desierto', 'nature', 
+    'https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?q=80&w=1000&auto=format&fit=crop',
+    'Viviste una etapa de soledad, carencia o vacío emocional. Tal vez sentiste que nada avanzaba y que estabas desconectado de lo que te daba sentido. Esa travesía te enseñó resistencia y autodependencia.',
+    'Estás en un momento de austeridad emocional o vital. No es tiempo de excesos ni distracciones, sino de depuración y enfoque en lo esencial.',
+    'Después de este periodo seco llegará una etapa fértil. Lo que hoy parece estancamiento es preparación silenciosa.',
+    '¿Qué etapa de escasez te volvió más fuerte de lo que imaginabas?',
+    '¿Qué distracción podrías soltar ahora para centrarte en lo esencial?',
+    '¿Qué nueva abundancia estás preparando sin saberlo?',
+    'Recuerda una época difícil y nombra en voz alta qué te sostuvo.',
+    'Reduce hoy una distracción innecesaria (pantallas, ruido, multitarea).',
+    'Durante tres días, mantén un gesto diario de autocuidado simple.',
+    'Coloca una mano sobre el pecho y otra sobre el abdomen al nombrar tu fortaleza.',
+    'Apaga conscientemente una pantalla durante una hora.',
+    'Cada día, di al cuidarte: “Estoy preparando terreno fértil”.',
+    'No confundas el vacío con el fracaso. La vida te invita a despojarte de lo innecesario.'
+),
+-- CARTA 13: LA OLA
+(
+    'nature-ola', 'nature', 'La Ola', 'nature', 
+    'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=1000&auto=format&fit=crop',
+    'Hubo un momento en el que una emoción o impulso te arrastró con fuerza. Puede que no tuvieras control total, pero esa experiencia te enseñó la potencia de tus sentimientos.',
+    'Estás viviendo una etapa de intensidad emocional. Hay entusiasmo, miedo o pasión mezclados. Resistirte a lo que sientes ahora solo aumentará el desorden interno.',
+    'Aprenderás a surfear tus emociones en lugar de ser arrastrado por ellas. Lo que hoy parece caótico se convertirá en fluidez.',
+    '¿Qué emoción pasada te desbordó pero te enseñó algo vital?',
+    '¿Qué estás sintiendo con más intensidad ahora mismo?',
+    '¿Qué pasaría si confiaras más en tu capacidad emocional?',
+    'Recuerda una emoción intensa y nómbrala sin juzgarla.',
+    'Cuando sientas una emoción fuerte hoy, respira profundo antes de reaccionar.',
+    'Durante tres días, expresa una emoción de forma consciente (hablar, moverte, crear).',
+    'Coloca una mano sobre el vientre y respira tres veces.',
+    'Al respirar antes de reaccionar, di: “Siento y elijo”.',
+    'Después de expresar tu emoción, agradece tu honestidad interior.',
+    'Tus emociones no son enemigas; son corrientes vivas que te atraviesan para enseñarte.'
+),
+-- CARTA 14: EL LAGO
+(
+    'nature-lago', 'nature', 'El Lago', 'nature', 
+    'https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=1000&auto=format&fit=crop',
+    'Hubo una etapa en tu vida en la que necesitaste silencio y recogimiento. Tal vez te alejaste del ruido externo para poder escucharte por dentro. Ese periodo te permitió verte con más honestidad, aunque no siempre fuera cómodo.',
+    'Estás en un momento de introspección natural. No es aislamiento, es pausa consciente. Tu mente y tus emociones están pidiendo espacio para asentarse y reflejar lo que realmente ocurre en tu interior.',
+    'Se aproxima una comprensión profunda de ti mismo. Si respetas esta quietud, emergerá una claridad serena que te ayudará a tomar decisiones más alineadas.',
+    '¿Qué etapa de silencio te ayudó a comprenderte mejor?',
+    '¿Qué necesitas escuchar de ti ahora mismo?',
+    '¿Qué claridad interior estás empezando a percibir?',
+    'Recuerda un momento de calma profunda y nombra en voz alta qué descubriste entonces.',
+    'Regálate hoy diez minutos de quietud sin estímulos externos.',
+    'Durante tres días, dedica un momento diario a escucharte sin juzgar.',
+    'Cierra los ojos un minuto y repite: “Me escuché y aprendí”.',
+    'Siéntate en silencio con una vela o luz suave durante tu momento de quietud.',
+    'Al terminar cada escucha interna, di: “Honro mi voz interior”.',
+    'No todo avance es movimiento. Detenerte es la forma más profunda de transformación.'
+),
+-- CARTA 15: LA ROCA
+(
+    'nature-roca', 'nature', 'La Roca', 'nature', 
+    'https://images.unsplash.com/photo-1498855926480-d9b44002e7c5?q=80&w=1000&auto=format&fit=crop',
+    'En algún momento tuviste que endurecerte para sobrevivir. Levantaste muros emocionales o límites firmes para protegerte de heridas que dolían demasiado. Esa rigidez te sostuvo cuando lo necesitabas.',
+    'Estás en una fase en la que tus límites son clave. No todo merece tu energía ni tu disponibilidad. Fortalecer tu estructura interna ahora es un acto de amor propio.',
+    'Aprenderás a ser firme sin ser rígido. Tu fortaleza se volverá flexible y más sabia, permitiéndote sostenerte sin aislarte.',
+    '¿Qué límite pasado te protegió cuando estabas vulnerable?',
+    '¿Dónde necesitas decir “no” con más claridad?',
+    '¿Qué tipo de fortaleza interior quieres cultivar?',
+    'Recuerda un límite que pusiste y nombra en voz alta cómo te ayudó.',
+    'Di “no” hoy a algo que no te suma.',
+    'Durante tres días, actúa desde un límite consciente.',
+    'Coloca tus manos firmes sobre una superficie sólida y respira profundo.',
+    'Al decir “no”, toca tu pecho y repite: “Me honro”.',
+    'Cada día, di: “Mi fortaleza es sabia”.',
+    'Tu firmeza no es dureza; es claridad. No cargues con lo que no te corresponde.'
+),
+-- CARTA 16: LA FLOR
+(
+    'nature-flor', 'nature', 'La Flor', 'nature', 
+    'https://images.unsplash.com/photo-1490750967868-886a502c2db2?q=80&w=1000&auto=format&fit=crop',
+    'Hubo un momento en tu vida en el que te abriste con inocencia. Mostraste tu sensibilidad sin armaduras y quizá te sentiste herido o incomprendido. Aun así, esa apertura te dejó una huella de autenticidad.',
+    'Estás en una fase de sensibilidad y expresión. Hay algo bello en ti que quiere mostrarse, pero también miedo a ser juzgado. Este es un tiempo para permitirte florecer sin pedir permiso.',
+    'Se abrirá una etapa de mayor autenticidad emocional. Si te honras ahora, atraerás vínculos y experiencias más alineadas con tu verdad.',
+    '¿Cuándo te mostraste tal como eras sin protegerte?',
+    '¿Qué parte sensible de ti quiere expresarse ahora?',
+    '¿Qué versión más auténtica de ti estás dispuesto a habitar?',
+    'Recuerda una ocasión en la que fuiste auténtico y agradécetelo.',
+    'Exprésate hoy de una forma creativa o emocional.',
+    'Durante tres días, elige una acción diaria desde tu autenticidad.',
+    'Coloca una mano sobre el corazón y respira al agradecerte.',
+    'Al expresarte, di en silencio: “Me permito florecer”.',
+    'Cada día, repite: “Honro mi verdad”.',
+    'No minimices tu sensibilidad. Lo que te hace frágil también te hace verdadero.'
+)
+ON CONFLICT (id) DO UPDATE SET
+interpretation_past = EXCLUDED.interpretation_past,
+interpretation_present = EXCLUDED.interpretation_present,
+interpretation_future = EXCLUDED.interpretation_future,
+question_past = EXCLUDED.question_past,
+question_present = EXCLUDED.question_present,
+question_future = EXCLUDED.question_future,
+challenge_past = EXCLUDED.challenge_past,
+challenge_present = EXCLUDED.challenge_present,
+challenge_future = EXCLUDED.challenge_future,
+ritual_past = EXCLUDED.ritual_past,
+ritual_present = EXCLUDED.ritual_present,
+ritual_future = EXCLUDED.ritual_future,
+invitation = EXCLUDED.invitation;
