@@ -139,7 +139,8 @@ async function generatePost() {
        "slug": "titulo-seo-kebab-case",
        "excerpt": "Meta descripción atractiva para Google (max 160 caracteres)",
        "content": "El artículo completo en Markdown...",
-       "tags": ["tag1", "tag2", "tag3", "tag4"]
+       "tags": ["tag1", "tag2", "tag3", "tag4"],
+       "visual_prompt": "Descripción visual de la escena para generar imagen (en inglés, detallado, estilo místico/cinemático)"
     }
     
     Importante: El campo 'content' debe contener TODO el artículo formateado en Markdown. Profundiza en el tema.`;
@@ -154,6 +155,19 @@ async function generatePost() {
         const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
         const postData = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(rawContent);
 
+        // 3. Generate AI Image URL (Fallback to Card Image)
+        let finalImageUrl = randomCard.image;
+        if (postData.visual_prompt) {
+            try {
+                // Use Pollinations.ai (Free, High Quality)
+                const safePrompt = encodeURIComponent(`${postData.visual_prompt} mystical tarot style, cinematic lighting, 8k, detailed`);
+                finalImageUrl = `https://image.pollinations.ai/prompt/${safePrompt}?width=1280&height=720&seed=${Date.now()}&nologo=true&model=flux`;
+                console.log('Generated AI Image URL:', finalImageUrl);
+            } catch (imgErr) {
+                console.error('Error constructing AI image URL, using fallback:', imgErr);
+            }
+        }
+
         // 4. Insert into DB
         const { error: insertError } = await supabase
             .from('blog_posts')
@@ -163,7 +177,7 @@ async function generatePost() {
                 excerpt: postData.excerpt,
                 content: postData.content,
                 tags: postData.tags,
-                image_url: randomCard.image,
+                image_url: finalImageUrl,
                 card_id: randomCard.id,
                 deck_id: randomCard.deck_id,
                 published_at: new Date().toISOString()
