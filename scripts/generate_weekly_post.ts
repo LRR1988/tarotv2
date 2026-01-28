@@ -91,7 +91,17 @@ async function callOpenRouter(prompt: string) {
 async function generatePost() {
     console.log('Starting blog post generation...');
 
-    // 1. Get a random card
+    // 1. Get recent posts to avoid repetition (last 12 posts ~ 3 months)
+    const { data: recentPosts } = await supabase
+        .from('blog_posts')
+        .select('title')
+        .order('published_at', { ascending: false })
+        .limit(12);
+
+    const avoidTopics = recentPosts?.map(p => p.title).join(', ') || 'Ninguno';
+    console.log('Avoiding recent topics:', avoidTopics);
+
+    // 2. Get a random card
     const { data: cards, error: cardError } = await supabase
         .from('cards')
         .select('*');
@@ -104,31 +114,35 @@ async function generatePost() {
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
     console.log(`Selected card: ${randomCard.name} (${randomCard.deck_id})`);
 
-    // 2. Generate Content
-    const prompt = `Escribe un artículo de blog místico y profundo sobre la carta del Tarot/Oráculo: "${randomCard.name}".
+    // 3. Generate Content
+    const prompt = `Actúa como un experto redactor de contenido esotérico y SEO.
+    Tu objetivo es escribir un artículo de blog viral y profundo para atraer tráfico a la web.
     
-    Contexto:
-    - Mazo: ${randomCard.deck_id}
-    - Interpretación base: ${randomCard.interpretation_present || randomCard.interpretation_future || 'Sin interpretación base'}
+    Inspiración visual: Carta "${randomCard.name}" del mazo ${randomCard.deck_id}.
+    Interpretación base (referencia): ${randomCard.interpretation_present || randomCard.interpretation_future || 'Sin data'}.
+
+    INSTRUCCIONES:
+    1. TEMA: No te limites a describir la carta. Usa la carta como excusa para hablar de un TEMA ESOTÉRICO GENERAL, interesante y buscado (ej: Astrología, Numerología, Tipos de Predicciones, Historia de la Magia, Simbología, Rituales de Poder, etc.).
+    2. RESTRICCIÓN: NO repitas estos temas recientes: [${avoidTopics}].
+    3. LONGITUD: Artículo EXTENSO (mínimo 800 palabras/5000 caracteres de contenido markdown). Queremos retención de lectura.
+    4. ESTRUCTURA SEO:
+       - H1 Atractivo (Clickbait elegante).
+       - Introducción que enganche (Hook).
+       - Varios H2 y H3 rompiendo el texto.
+       - Uso de listas (bullets) para fácil lectura.
+       - Negritas en palabras clave.
+       - Conclusión práctica o ritual sencillo.
     
-    Requisitos:
-    1. Título evocador.
-    2. Contenido en Markdown bien estructurado (aprox 1000 caracteres).
-    3. Tono: Sabio, reflexivo, algo poético pero accesible.
-    4. Estructura:
-       - Introducción al arquetipo.
-       - Significado profundo y consejo para la semana.
-       - Una sección final titulada "Curiosidad Mística" con un dato interesante (histórico, simbólico o mitológico) relacionado con esta carta o su símbolo.
-    5. Formato JSON:
+    5. Formato JSON OBLIGATORIO:
     {
-       "title": "TÍTULO",
-       "slug": "titulo-kebab-case",
-       "excerpt": "Breve resumen de 2 líneas",
-       "content": "Contenido completo en Markdown...",
-       "tags": ["tag1", "tag2"]
+       "title": "Título SEO Optimizado",
+       "slug": "titulo-seo-kebab-case",
+       "excerpt": "Meta descripción atractiva para Google (max 160 caracteres)",
+       "content": "El artículo completo en Markdown...",
+       "tags": ["tag1", "tag2", "tag3", "tag4"]
     }
     
-    Responde SOLO con el JSON.`;
+    Importante: El campo 'content' debe contener TODO el artículo formateado en Markdown. Profundiza en el tema.`;
 
     const rawContent = await callOpenRouter(prompt);
     if (!rawContent) {
@@ -140,7 +154,7 @@ async function generatePost() {
         const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
         const postData = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(rawContent);
 
-        // 3. Insert into DB
+        // 4. Insert into DB
         const { error: insertError } = await supabase
             .from('blog_posts')
             .insert([{
